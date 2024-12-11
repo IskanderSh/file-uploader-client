@@ -16,18 +16,18 @@ func main() {
 	}
 	defer conn.Close()
 
-	client := pb.NewFileServiceClient(conn)
+	pb.NewFileServiceClient(conn)
 
 	var fileName string
 	flag.StringVar(&fileName, "file-name", "test.txt", "file name")
 	flag.Parse()
 
-	_, err := os.Stat(fileName)
+	_, err = os.Stat(fileName)
 	if err != nil {
 		panic(err)
 	}
 
-	file, err := os.Open(fileName)
+	_, err = os.Open(fileName)
 	if err != nil {
 		panic(err)
 	}
